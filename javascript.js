@@ -1,3 +1,5 @@
+//EJERCICIO USANDO PROMPT
+
 let productos = {
   ropa: {
     type: 'ropita',
@@ -18,53 +20,47 @@ let productos = {
   },
 };
 
-let compra = prompt('¿qué artículo quieres comprar?');
+/* USANDO IFF 
+
+let compra = prompt('¿qué artículo quieres comprar, ropa, libros o general?');
+let IVA
 
 if (productos[compra].type == 'ropita' && productos.ropa.count > 0) {
-  totalsinIVA = productos.ropa.count * productos.ropa.price;
-  IVA = totalsinIVA * 0.1;
-  totalconIVA = totalsinIVA + IVA;
-} else {
-  totalconIVA = 0;
+  IVA = 0.1;
+} else if (productos[compra].type == 'librito' && productos.libros.count > 0) {
+  IVA = 0.04;
+} else if (
+  productos[compra].type == 'articulos' &&
+  productos.general.count > 0
+) {
+  IVA = 0.21;
 }
 
-if (productos[compra].type == 'librito' && productos.libros.count > 0) {
-  totalsinIVA = productos.libros.count * productos.libros.price;
-  IVA = totalsinIVA * 0.04;
-  totalconIVA = totalsinIVA + IVA;
-} else {
-  totalconIVA = 0;
-}
+let totalsinIVA = productos[compra].count * productos[compra].price;
+let IVAtotal = IVA * totalsinIVA;
+let totalconIVA = IVAtotal + totalsinIVA;
+console.log('Total de la compra incluido el IVA: ' + totalconIVA + '€');
 
-if (productos[compra].type == 'articulos' && productos.general.count > 0) {
-  totalsinIVA = productos.general.count * productos.general.price;
-  IVA = totalsinIVA * 0.21;
-  totalconIVA = totalsinIVA + IVA;
-} else {
-  totalconIVA = 0;
-}
-
-console.log(totalconIVA);
-
-/*
-switch (productos[compra].type) {
-  case ropita:
-    totalsinIVA = productos.ropa.count * productos.ropa.price;
-    IVA = totalsinIVA * 0.1;
-    totalconIVA = totalsinIVA + IVA;
-    break;
-
-  case librito:
-    totalsinIVA = productos.libros.count * productos.libros.price;
-    IVA = totalsinIVA * 0.04;
-    totalconIVA = totalsinIVA + IVA;
-    break;
-
-  case general:
-    totalsinIVA = productos.general.count * productos.general.price;
-    IVA = totalsinIVA * 0.21;
-    totalconIVA = totalsinIVA + IVA;
-}
-
-console.log(totalconIVA);
 */
+
+//USANDO SWITCH
+
+let compra = prompt('¿qué artículo quieres comprar, ropa, libros o general?');
+let IVA;
+
+switch (productos[compra].type) {
+  case 'ropita':
+    IVA = 0.1;
+    break;
+
+  case 'librito':
+    IVA = 0.04;
+    break;
+
+  case 'articulos':
+    IVA = 0.21;
+}
+let totalsinIVA = productos[compra].count * productos[compra].price;
+let IVAtotal = IVA * totalsinIVA;
+let totalconIVA = totalsinIVA + IVAtotal;
+console.log('Total de la compra incluido el IVA: ' + totalconIVA + '€');
